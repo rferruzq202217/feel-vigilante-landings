@@ -41,7 +41,13 @@ async function checkLanding(browser, landing) {
   try {
     const res = await page.goto(landing.url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT })
       .catch((e) => { throw fail('carga', e.message.split('\n')[0]); });
-    if (!res || res.status() >= 400) throw fail('carga', `HTTP ${res ? res.status() : 'sin respuesta'}`);
+    if (!res) throw fail('carga', 'sin respuesta');
+    if (res.status() === 403) {
+      // Suele ser el cortafuegos del servidor bloqueando IPs de centros de datos, no a los clientes.
+      const server = res.headers()['server'] || 'desconocido';
+      throw fail('bloqueo', `HTTP 403: el servidor (${server}) bloquea al vigilante; comprobar si también a clientes`);
+    }
+    if (res.status() >= 400) throw fail('carga', `HTTP ${res.status()}`);
     const loadMs = Date.now() - started;
 
     await page.locator('#datepicker .ui-datepicker-calendar').waitFor({ state: 'visible', timeout: TIMEOUT })

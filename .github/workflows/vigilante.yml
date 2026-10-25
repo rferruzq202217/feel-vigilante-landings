@@ -8,8 +8,10 @@ on:
 concurrency:
   group: vigilante
   cancel-in-progress: false
+  # Con cancel-in-progress a false, una pasada lanzada mientras otra corre espera su turno.
 
 permissions:
+  actions: write
   contents: read
   pages: write
   id-token: write
@@ -24,6 +26,7 @@ jobs:
     # Imagen con Chromium ya instalado, para no descargarlo en cada pasada.
     container: mcr.microsoft.com/playwright:v1.48.2-jammy
     steps:
+      - run: echo "STARTED_AT=$(date +%s)" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
       # Estado, histórico e incidencias de las pasadas anteriores.
       - uses: actions/cache/restore@v4
@@ -52,3 +55,7 @@ jobs:
         # Un fallo al publicar no debe poner la pasada en rojo: el rojo es solo para caídas nuevas.
         continue-on-error: true
         uses: actions/deploy-pages@v4
+      - if: always() && github.ref == 'refs/heads/main'
+        run: node next-run.js
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
