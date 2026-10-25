@@ -175,7 +175,7 @@ function writeSite(checkedAt, results, history, incidents) {
     } else if (result.ok) {
       state[landing.url] = { ok: true };
     }
-    if (!result.ok) down.push(landing.name);
+    if (!result.ok) down.push(result.step === 'bloqueo' ? `${landing.name} (bloqueo)` : landing.name);
   }
 
   history.urls = LANDINGS.map((l) => l.url);
@@ -188,7 +188,7 @@ function writeSite(checkedAt, results, history, incidents) {
   fs.writeFileSync(INCIDENTS, JSON.stringify(incidents, null, 2));
   fs.writeFileSync(HISTORY, JSON.stringify(history));
   writeSite(now, results, history, incidents);
-  console.log(`\n${LANDINGS.length - down.length}/${LANDINGS.length} landings bien${down.length ? ` · caídas: ${down.join(', ')}` : ''}`);
+  console.log(`\n${LANDINGS.length - down.length}/${LANDINGS.length} landings bien${down.length ? ` · con fallo: ${down.join(', ')}` : ''}`);
   // Solo una caída nueva pone la ejecución en rojo, y GitHub manda un email: sin repetirlo cada 5 minutos.
   process.exitCode = newIncidents ? 1 : 0;
 })();
