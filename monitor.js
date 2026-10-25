@@ -16,7 +16,8 @@ const INCIDENTS = path.join(DATA, 'incidents.json');
 const HISTORY_DAYS = 7;
 const TIMEOUT = 25000;
 const SLOW_MS = 10000;
-const PARALLEL = 6;
+// Pocas a la vez: varias landings comparten servidor y muchas peticiones seguidas disparan su bloqueo anti-bots.
+const PARALLEL = 3;
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 FeelVigilante/1.0';
 
 function readJson(file, fallback) {
@@ -92,8 +93,11 @@ async function notify(text) {
 
 async function checkWithRetry(browser, landing) {
   // Un reintento antes de darla por caída, para no avisar por un fallo puntual.
+  // Si el servidor bloquea al vigilante, se espera un poco antes de reintentar.
   const first = await checkLanding(browser, landing);
-  return first.ok ? first : checkLanding(browser, landing);
+  if (first.ok) return first;
+  if (first.step === 'bloqueo') await new Promise((r) => setTimeout(r, 20000));
+  return checkLanding(browser, landing);
 }
 
 function writeSite(checkedAt, results, history, incidents) {
@@ -114,7 +118,14 @@ function writeSite(checkedAt, results, history, incidents) {
       downSince: r.ok ? null : (incidents.find((x) => x.url === landing.url && !x.end) || {}).start || checkedAt,
     };
   });
-  const status = { checkedAt, total: landings.length, down: landings.filter((l) => !l.ok).length, landings };
+  // «down» son caídas reales; «blocked» son landings que bloquearon al vigilante y no se pudieron comprobar.
+  const status = {
+    checkedAt,
+    total: landings.length,
+    down: landings.filter((l) => !l.ok && l.step !== 'bloqueo').length,
+    blocked: landings.filter((l) => l.step === 'bloqueo').length,
+    landings,
+  };
   fs.mkdirSync(SITE, { recursive: true });
   fs.writeFileSync(path.join(SITE, 'status.json'), JSON.stringify(status, null, 2));
   fs.writeFileSync(path.join(SITE, 'incidents.json'), JSON.stringify(incidents, null, 2));
@@ -168,7 +179,8 @@ function writeSite(checkedAt, results, history, incidents) {
   }
 
   history.urls = LANDINGS.map((l) => l.url);
-  history.runs.push([now, results.map((r) => [r.ok ? 1 : 0, r.loadMs ? Math.round(r.loadMs / 100) / 10 : null])]);
+  // 1 = bien, 0 = caída, 2 = bloqueada al vigilante (sin dato).
+  history.runs.push([now, results.map((r) => [r.ok ? 1 : (r.step === 'bloqueo' ? 2 : 0), r.loadMs ? Math.round(r.loadMs / 100) / 10 : null])]);
   const cutoff = Date.parse(now) - HISTORY_DAYS * 86400000;
   history.runs = history.runs.filter(([t]) => Date.parse(t) >= cutoff);
 

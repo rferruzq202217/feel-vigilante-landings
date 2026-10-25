@@ -39,7 +39,8 @@
   .ko .meta { color: var(--ko); }
   .strip { display: flex; gap: 1px; height: 22px; }
   .strip i { flex: 1; border-radius: 1px; background: var(--empty); }
-  .strip i.ok { background: var(--ok); opacity: .55; } .strip i.ko { background: var(--ko); }
+  .strip i.ok { background: var(--ok); opacity: .55; } .strip i.ko { background: var(--ko); } .strip i.blk { background: var(--muted); opacity: .5; }
+  .card.blk .dot { background: var(--muted); } .card.blk .meta { color: var(--muted); }
   .axis { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; margin-top: 3px; }
   table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
   th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -77,7 +78,8 @@ const SLOTS = 96; // 24 h en tramos de 15 minutos
 function uptime(history, idx, hours) {
   const cutoff = Date.now() - hours * 3600000;
   const runs = history.runs.filter(([t]) => Date.parse(t) >= cutoff);
-  const vals = runs.map(([, r]) => r[idx]).filter(Boolean);
+  // Las pasadas en que la landing bloqueó al vigilante (2) no cuentan: no sabemos si estaba bien.
+  const vals = runs.map(([, r]) => r[idx]).filter((v) => v && v[0] !== 2);
   if (!vals.length) return null;
   return (100 * vals.filter((v) => v[0] === 1).length) / vals.length;
 }
@@ -89,7 +91,8 @@ function strip(history, idx) {
     const ts = Date.parse(t);
     if (ts < start || !r[idx]) continue;
     const k = Math.min(SLOTS - 1, Math.floor((ts - start) / size));
-    cells[k] = cells[k] === 'ko' || r[idx][0] === 0 ? 'ko' : 'ok';
+    const v = r[idx][0] === 0 ? 'ko' : r[idx][0] === 2 ? 'blk' : 'ok';
+    cells[k] = cells[k] === 'ko' || v === 'ko' ? 'ko' : cells[k] === 'ok' || v === 'ok' ? 'ok' : 'blk';
   }
   return cells.map((c) => `<i class="${c || ''}"></i>`).join('');
 }
@@ -106,22 +109,25 @@ async function load() {
   const idxOf = (url) => history.urls.indexOf(url);
   const all24 = status.landings.map((l) => uptime(history, idxOf(l.url), 24)).filter((v) => v != null);
   const avg24 = all24.length ? all24.reduce((a, b) => a + b, 0) / all24.length : null;
-  const mins7d = incidents.filter((x) => Date.parse(x.start) >= Date.now() - 7 * 86400000)
+  const mins7d = incidents.filter((x) => x.step !== 'bloqueo' && Date.parse(x.start) >= Date.now() - 7 * 86400000)
     .reduce((a, x) => a + (x.minutes ?? Math.round((Date.now() - Date.parse(x.start)) / 60000)), 0);
   document.getElementById('summary').innerHTML = [
-    [`${status.total - status.down} / ${status.total}`, 'landings funcionando ahora'],
+    [`${status.total - status.down - (status.blocked || 0)} / ${status.total}`, 'landings funcionando ahora'],
     [status.down, 'caídas ahora'],
+    [status.blocked || 0, 'bloquean al vigilante (sin dato)'],
     [pct(avg24), 'disponibilidad media 24 h'],
     [`${Math.round(mins7d / 60 * 10) / 10} h`, 'de caída en 7 días (suma)'],
   ].map(([b, s]) => `<div class="tile"><b>${b}</b><span>${s}</span></div>`).join('');
 
-  const order = [...status.landings].sort((a, b) => a.ok - b.ok || a.name.localeCompare(b.name, 'es'));
+  const rank = (l) => (l.ok ? 2 : l.step === 'bloqueo' ? 1 : 0);
+  const order = [...status.landings].sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name, 'es'));
   document.getElementById('grid').innerHTML = order.map((l) => {
     const i = idxOf(l.url);
-    const meta = l.ok
+    const blocked = l.step === 'bloqueo';
+    const meta = blocked ? `Sin dato desde ${fmtTime(l.downSince)}: el servidor bloquea al vigilante (403)` : l.ok
       ? `${(l.loadMs / 1000).toFixed(1)} s · ${l.days} días · ${l.slots} horarios el ${l.firstDate} · ${l.price?.toFixed(2)} €`
       : `Caída desde ${fmtTime(l.downSince)} · ${esc(l.step)}: ${esc(l.detail)}`;
-    return `<div class="card ${l.ok ? (l.slow ? 'slow' : '') : 'ko'}">
+    return `<div class="card ${l.ok ? (l.slow ? 'slow' : '') : blocked ? 'blk' : 'ko'}">
       <div class="head"><span class="dot"></span><span class="name"><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)}</a></span>
       <span class="uptime">24 h ${pct(uptime(history, i, 24))} · 7 d ${pct(uptime(history, i, 168))}</span></div>
       <div class="meta">${meta}</div>
@@ -129,7 +135,7 @@ async function load() {
     </div>`;
   }).join('');
 
-  const rows = [...incidents].sort((a, b) => b.start.localeCompare(a.start)).slice(0, 100);
+  const rows = incidents.filter((x) => x.step !== 'bloqueo').sort((a, b) => b.start.localeCompare(a.start)).slice(0, 100);
   document.getElementById('incidents').innerHTML = rows.length ? rows.map((x) => `<tr>
     <td>${esc(x.name)}</td><td>${fmtTime(x.start)}</td>
     <td>${x.end ? fmtTime(x.end) : '<span class="open">sigue caída</span>'}</td>
