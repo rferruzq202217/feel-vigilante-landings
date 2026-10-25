@@ -1,0 +1,35 @@
+name: Vigilante de landings
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: vigilante
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    # Imagen con Chromium ya instalado, para no descargarlo en cada pasada.
+    container: mcr.microsoft.com/playwright:v1.48.2-jammy
+    steps:
+      - uses: actions/checkout@v4
+      # Qué landings estaban caídas en la pasada anterior, para avisar solo de los cambios.
+      - uses: actions/cache/restore@v4
+        with:
+          path: state.json
+          key: vigilante-state-${{ github.run_id }}
+          restore-keys: vigilante-state-
+      - run: npm install --no-save --no-audit --no-fund playwright@1.48.2
+      - run: node monitor.js
+        env:
+          HOME: /root
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: state.json
+          key: vigilante-state-${{ github.run_id }}
