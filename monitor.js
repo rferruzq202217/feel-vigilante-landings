@@ -29,7 +29,9 @@ function fail(step, detail) {
 
 async function checkLanding(browser, landing) {
   // Navegador con identidad normal: algunos servidores bloquean «HeadlessChrome».
-  const page = await browser.newPage({ locale: 'es-ES', viewport: { width: 1280, height: 900 }, userAgent: UA });
+  // Cabecera secreta para que el cortafuegos de las landings deje pasar al vigilante (secreto VIGILANTE_KEY).
+  const extraHTTPHeaders = process.env.VIGILANTE_KEY ? { 'X-Vigilante': process.env.VIGILANTE_KEY } : {};
+  const page = await browser.newPage({ locale: 'es-ES', viewport: { width: 1280, height: 900 }, userAgent: UA, extraHTTPHeaders });
   const checks = [];
   page.on('response', async (res) => {
     if (new URL(res.url()).pathname !== '/check' || res.request().method() !== 'POST') return;
@@ -148,15 +150,16 @@ function writeSite(checkedAt, results, history, incidents) {
     console.log(`${result.ok ? (result.slow ? 'LENTA' : 'OK   ') : 'KO   '} ${landing.name}: ${result.step ? result.step + ' · ' : ''}${result.detail}`);
 
     if (!result.ok && prev.ok) {
-      newIncidents++;
+      if (result.step !== 'bloqueo') newIncidents++;
       incidents.push({ name: landing.name, url: landing.url, start: now, end: null, minutes: null, step: result.step, detail: result.detail });
-      await notify(`:red_circle: *${landing.name}* caída (${result.step}): ${result.detail}\n${landing.url}\nRevisar y pausar sus campañas hasta que vuelva.`);
+      // Un bloqueo del cortafuegos al vigilante solo se ve en el dashboard: no es una caída para los clientes.
+      if (result.step !== 'bloqueo') await notify(`:red_circle: *${landing.name}* caída (${result.step}): ${result.detail}\n${landing.url}\nRevisar y pausar sus campañas hasta que vuelva.`);
       state[landing.url] = { ok: false, since: now, step: result.step };
     } else if (result.ok && !prev.ok) {
       const mins = Math.round((Date.parse(now) - Date.parse(prev.since)) / 60000);
       const open = incidents.find((x) => x.url === landing.url && !x.end);
       if (open) Object.assign(open, { end: now, minutes: mins });
-      await notify(`:large_green_circle: *${landing.name}* recuperada tras ${mins} min (fallaba en: ${prev.step}).\n${landing.url}`);
+      if (prev.step !== 'bloqueo') await notify(`:large_green_circle: *${landing.name}* recuperada tras ${mins} min (fallaba en: ${prev.step}).\n${landing.url}`);
       state[landing.url] = { ok: true };
     } else if (result.ok) {
       state[landing.url] = { ok: true };

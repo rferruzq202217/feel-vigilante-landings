@@ -40,6 +40,7 @@ jobs:
         env:
           HOME: /root
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          VIGILANTE_KEY: ${{ secrets.VIGILANTE_KEY }}
       - if: always()
         uses: actions/cache/save@v4
         with:
