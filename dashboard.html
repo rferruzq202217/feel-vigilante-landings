@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vigilante de landings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Signika:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f4f8; --card: #ffffff; --text: #1d1622; --muted: #6b6274; --line: #e6e0eb;
+    --brand: #5F3A78; --ok: #1f9d55; --ko: #d0342c; --slow: #d98a00; --empty: #e6e0eb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #17121b; --card: #221b28; --text: #f1edf4; --muted: #a79fb0; --line: #352c3d;
+      --brand: #b18acb; --ok: #3ccf7c; --ko: #ff6b61; --slow: #f2b23a; --empty: #352c3d; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 Inter, system-ui, sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1, h2 { font-family: Signika, Inter, sans-serif; font-weight: 600; margin: 0; }
+  h1 { font-size: 26px; color: var(--brand); }
+  h2 { font-size: 18px; margin: 32px 0 12px; }
+  .sub { color: var(--muted); margin-top: 4px; }
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 20px; }
+  .tile { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+  .tile b { display: block; font-size: 26px; font-family: Signika, Inter, sans-serif; }
+  .tile span { color: var(--muted); font-size: 13px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .card.ko { border-color: var(--ko); }
+  .head { display: flex; align-items: center; gap: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; background: var(--ok); }
+  .ko .dot { background: var(--ko); } .slow .dot { background: var(--slow); }
+  .name { font-weight: 600; flex: 1; }
+  .name a { color: inherit; text-decoration: none; }
+  .uptime { color: var(--muted); font-size: 12px; white-space: nowrap; }
+  .meta { color: var(--muted); font-size: 13px; margin: 6px 0 8px; min-height: 19px; }
+  .ko .meta { color: var(--ko); }
+  .strip { display: flex; gap: 1px; height: 22px; }
+  .strip i { flex: 1; border-radius: 1px; background: var(--empty); }
+  .strip i.ok { background: var(--ok); opacity: .55; } .strip i.ko { background: var(--ko); }
+  .axis { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; margin-top: 3px; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; }
+  tr:last-child td { border-bottom: 0; }
+  .open { color: var(--ko); font-weight: 600; }
+  .tablewrap { overflow-x: auto; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 24px; }
+  footer a { color: var(--brand); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Vigilante de landings</h1>
+  <div class="sub" id="sub">Cargando…</div>
+  <div class="summary" id="summary"></div>
+
+  <h2>Landings con campaña</h2>
+  <div class="grid" id="grid"></div>
+
+  <h2>Incidencias</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Landing</th><th>Inicio</th><th>Fin</th><th>Duración</th><th>Fallo</th></tr></thead>
+    <tbody id="incidents"></tbody>
+  </table></div>
+
+  <footer>Cada 5 minutos se abre cada landing con un navegador y se comprueba carga, calendario, horarios (POST /check), precio y formulario de reserva, sin crear prerreservas. Datos en <a href="status.json">status.json</a>, <a href="incidents.json">incidents.json</a> y <a href="history.json">history.json</a>.</footer>
+</main>
+<script>
+const fmt = new Intl.DateTimeFormat('es-ES', { timeZone: 'Europe/Madrid', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+const fmtTime = (t) => (t ? fmt.format(new Date(t)) : '—');
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const SLOTS = 96; // 24 h en tramos de 15 minutos
+
+function uptime(history, idx, hours) {
+  const cutoff = Date.now() - hours * 3600000;
+  const runs = history.runs.filter(([t]) => Date.parse(t) >= cutoff);
+  const vals = runs.map(([, r]) => r[idx]).filter(Boolean);
+  if (!vals.length) return null;
+  return (100 * vals.filter((v) => v[0] === 1).length) / vals.length;
+}
+
+function strip(history, idx) {
+  const end = Date.now(), start = end - 24 * 3600000, size = (end - start) / SLOTS;
+  const cells = Array.from({ length: SLOTS }, () => null);
+  for (const [t, r] of history.runs) {
+    const ts = Date.parse(t);
+    if (ts < start || !r[idx]) continue;
+    const k = Math.min(SLOTS - 1, Math.floor((ts - start) / size));
+    cells[k] = cells[k] === 'ko' || r[idx][0] === 0 ? 'ko' : 'ok';
+  }
+  return cells.map((c) => `<i class="${c || ''}"></i>`).join('');
+}
+
+const pct = (v) => (v == null ? '—' : `${v >= 99.95 ? '100' : v.toFixed(1)} %`);
+
+async function load() {
+  const [status, incidents, history] = await Promise.all(
+    ['status.json', 'incidents.json', 'history.json'].map((f) => fetch(`${f}?t=${Date.now()}`).then((r) => r.json()))
+  );
+  const age = Math.round((Date.now() - Date.parse(status.checkedAt)) / 60000);
+  document.getElementById('sub').textContent = `Última comprobación: ${fmtTime(status.checkedAt)} (hace ${age} min) · se actualiza sola cada minuto`;
+
+  const idxOf = (url) => history.urls.indexOf(url);
+  const all24 = status.landings.map((l) => uptime(history, idxOf(l.url), 24)).filter((v) => v != null);
+  const avg24 = all24.length ? all24.reduce((a, b) => a + b, 0) / all24.length : null;
+  const mins7d = incidents.filter((x) => Date.parse(x.start) >= Date.now() - 7 * 86400000)
+    .reduce((a, x) => a + (x.minutes ?? Math.round((Date.now() - Date.parse(x.start)) / 60000)), 0);
+  document.getElementById('summary').innerHTML = [
+    [`${status.total - status.down} / ${status.total}`, 'landings funcionando ahora'],
+    [status.down, 'caídas ahora'],
+    [pct(avg24), 'disponibilidad media 24 h'],
+    [`${Math.round(mins7d / 60 * 10) / 10} h`, 'de caída en 7 días (suma)'],
+  ].map(([b, s]) => `<div class="tile"><b>${b}</b><span>${s}</span></div>`).join('');
+
+  const order = [...status.landings].sort((a, b) => a.ok - b.ok || a.name.localeCompare(b.name, 'es'));
+  document.getElementById('grid').innerHTML = order.map((l) => {
+    const i = idxOf(l.url);
+    const meta = l.ok
+      ? `${(l.loadMs / 1000).toFixed(1)} s · ${l.days} días · ${l.slots} horarios el ${l.firstDate} · ${l.price?.toFixed(2)} €`
+      : `Caída desde ${fmtTime(l.downSince)} · ${esc(l.step)}: ${esc(l.detail)}`;
+    return `<div class="card ${l.ok ? (l.slow ? 'slow' : '') : 'ko'}">
+      <div class="head"><span class="dot"></span><span class="name"><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)}</a></span>
+      <span class="uptime">24 h ${pct(uptime(history, i, 24))} · 7 d ${pct(uptime(history, i, 168))}</span></div>
+      <div class="meta">${meta}</div>
+      <div class="strip">${strip(history, i)}</div><div class="axis"><span>hace 24 h</span><span>ahora</span></div>
+    </div>`;
+  }).join('');
+
+  const rows = [...incidents].sort((a, b) => b.start.localeCompare(a.start)).slice(0, 100);
+  document.getElementById('incidents').innerHTML = rows.length ? rows.map((x) => `<tr>
+    <td>${esc(x.name)}</td><td>${fmtTime(x.start)}</td>
+    <td>${x.end ? fmtTime(x.end) : '<span class="open">sigue caída</span>'}</td>
+    <td>${x.minutes != null ? `${x.minutes} min` : `${Math.round((Date.now() - Date.parse(x.start)) / 60000)} min…`}</td>
+    <td>${esc(x.step)}: ${esc(x.detail)}</td></tr>`).join('') : '<tr><td colspan="5">Sin incidencias registradas.</td></tr>';
+}
+
+load().catch((e) => { document.getElementById('sub').textContent = `No se pudieron cargar los datos: ${e.message}`; });
+setInterval(() => load().catch(() => {}), 60000);
+</script>
+</body>
+</html>

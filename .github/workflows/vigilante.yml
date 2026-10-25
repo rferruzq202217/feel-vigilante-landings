@@ -9,27 +9,44 @@ concurrency:
   group: vigilante
   cancel-in-progress: false
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 8
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     # Imagen con Chromium ya instalado, para no descargarlo en cada pasada.
     container: mcr.microsoft.com/playwright:v1.48.2-jammy
     steps:
       - uses: actions/checkout@v4
-      # Qué landings estaban caídas en la pasada anterior, para avisar solo de los cambios.
+      # Estado, histórico e incidencias de las pasadas anteriores.
       - uses: actions/cache/restore@v4
         with:
-          path: state.json
-          key: vigilante-state-${{ github.run_id }}
-          restore-keys: vigilante-state-
+          path: data
+          key: vigilante-data-${{ github.run_id }}
+          restore-keys: vigilante-data-
       - run: npm install --no-save --no-audit --no-fund playwright@1.48.2
-      - run: node monitor.js
+      - id: monitor
+        run: node monitor.js
         env:
           HOME: /root
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - if: always()
         uses: actions/cache/save@v4
         with:
-          path: state.json
-          key: vigilante-state-${{ github.run_id }}
+          path: data
+          key: vigilante-data-${{ github.run_id }}
+      # Dashboard y JSON públicos (para el equipo y para Kasper), aunque haya caídas.
+      - if: always() && hashFiles('site/status.json') != ''
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - if: always() && hashFiles('site/status.json') != ''
+        id: deploy
+        uses: actions/deploy-pages@v4

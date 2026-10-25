@@ -7,14 +7,20 @@ const path = require('path');
 const { chromium } = require('playwright');
 
 const LANDINGS = JSON.parse(fs.readFileSync(path.join(__dirname, 'landings.json'), 'utf8'));
-const STATE = process.env.STATE_FILE || path.join(__dirname, 'state.json');
+// Estado entre pasadas (se conserva con la caché de Actions) y web pública con el dashboard.
+const DATA = path.join(__dirname, 'data');
+const SITE = path.join(__dirname, 'site');
+const STATE = path.join(DATA, 'state.json');
+const HISTORY = path.join(DATA, 'history.json');
+const INCIDENTS = path.join(DATA, 'incidents.json');
+const HISTORY_DAYS = 7;
 const TIMEOUT = 25000;
 const SLOW_MS = 10000;
 const PARALLEL = 6;
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 FeelVigilante/1.0';
 
-function readState() {
-  try { return JSON.parse(fs.readFileSync(STATE, 'utf8')); } catch { return {}; }
+function readJson(file, fallback) {
+  try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return fallback; }
 }
 
 function fail(step, detail) {
@@ -60,7 +66,7 @@ async function checkLanding(browser, landing) {
 
     const firstDate = await page.locator('#fecha').inputValue().catch(() => '');
     const detail = `${(loadMs / 1000).toFixed(1)} s · ${selectableDays} días · ${slots.length} horarios el ${firstDate} · ${price.toFixed(2)} €`;
-    return { ok: true, slow: loadMs > SLOW_MS, detail };
+    return { ok: true, slow: loadMs > SLOW_MS, detail, loadMs, days: selectableDays, slots: slots.length, firstDate, price };
   } catch (err) {
     return { ok: false, step: err.step || 'carga', detail: err.message.split('\n')[0] };
   } finally {
@@ -82,8 +88,38 @@ async function checkWithRetry(browser, landing) {
   return first.ok ? first : checkLanding(browser, landing);
 }
 
+function writeSite(checkedAt, results, history, incidents) {
+  const landings = LANDINGS.map((landing, i) => {
+    const r = results[i];
+    return {
+      name: landing.name,
+      url: landing.url,
+      ok: r.ok,
+      slow: !!r.slow,
+      step: r.step || null,
+      detail: r.detail,
+      loadMs: r.loadMs ?? null,
+      days: r.days ?? null,
+      slots: r.slots ?? null,
+      firstDate: r.firstDate ?? null,
+      price: r.price ?? null,
+      downSince: r.ok ? null : (incidents.find((x) => x.url === landing.url && !x.end) || {}).start || checkedAt,
+    };
+  });
+  const status = { checkedAt, total: landings.length, down: landings.filter((l) => !l.ok).length, landings };
+  fs.mkdirSync(SITE, { recursive: true });
+  fs.writeFileSync(path.join(SITE, 'status.json'), JSON.stringify(status, null, 2));
+  fs.writeFileSync(path.join(SITE, 'incidents.json'), JSON.stringify(incidents, null, 2));
+  fs.writeFileSync(path.join(SITE, 'history.json'), JSON.stringify(history));
+  fs.copyFileSync(path.join(__dirname, 'dashboard.html'), path.join(SITE, 'index.html'));
+}
+
 (async () => {
-  const state = readState();
+  fs.mkdirSync(DATA, { recursive: true });
+  const state = readJson(STATE, {});
+  const incidents = readJson(INCIDENTS, []);
+  // Histórico compacto: por pasada, la hora y por landing [ok (1/0), segundos de carga].
+  const history = readJson(HISTORY, { urls: [], runs: [] });
   const browser = await chromium.launch();
   const now = new Date().toISOString();
 
@@ -107,10 +143,13 @@ async function checkWithRetry(browser, landing) {
 
     if (!result.ok && prev.ok) {
       newIncidents++;
+      incidents.push({ name: landing.name, url: landing.url, start: now, end: null, minutes: null, step: result.step, detail: result.detail });
       await notify(`:red_circle: *${landing.name}* caída (${result.step}): ${result.detail}\n${landing.url}\nRevisar y pausar sus campañas hasta que vuelva.`);
       state[landing.url] = { ok: false, since: now, step: result.step };
     } else if (result.ok && !prev.ok) {
       const mins = Math.round((Date.parse(now) - Date.parse(prev.since)) / 60000);
+      const open = incidents.find((x) => x.url === landing.url && !x.end);
+      if (open) Object.assign(open, { end: now, minutes: mins });
       await notify(`:large_green_circle: *${landing.name}* recuperada tras ${mins} min (fallaba en: ${prev.step}).\n${landing.url}`);
       state[landing.url] = { ok: true };
     } else if (result.ok) {
@@ -119,7 +158,15 @@ async function checkWithRetry(browser, landing) {
     if (!result.ok) down.push(landing.name);
   }
 
+  history.urls = LANDINGS.map((l) => l.url);
+  history.runs.push([now, results.map((r) => [r.ok ? 1 : 0, r.loadMs ? Math.round(r.loadMs / 100) / 10 : null])]);
+  const cutoff = Date.parse(now) - HISTORY_DAYS * 86400000;
+  history.runs = history.runs.filter(([t]) => Date.parse(t) >= cutoff);
+
   fs.writeFileSync(STATE, JSON.stringify(state, null, 2));
+  fs.writeFileSync(INCIDENTS, JSON.stringify(incidents, null, 2));
+  fs.writeFileSync(HISTORY, JSON.stringify(history));
+  writeSite(now, results, history, incidents);
   console.log(`\n${LANDINGS.length - down.length}/${LANDINGS.length} landings bien${down.length ? ` · caídas: ${down.join(', ')}` : ''}`);
   // Solo una caída nueva pone la ejecución en rojo, y GitHub manda un email: sin repetirlo cada 5 minutos.
   process.exitCode = newIncidents ? 1 : 0;
