@@ -49,4 +49,6 @@ jobs:
           path: site
       - if: always() && hashFiles('site/status.json') != ''
         id: deploy
+        # Un fallo al publicar no debe poner la pasada en rojo: el rojo es solo para caídas nuevas.
+        continue-on-error: true
         uses: actions/deploy-pages@v4
