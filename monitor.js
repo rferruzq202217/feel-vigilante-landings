@@ -19,6 +19,7 @@ const SLOW_MS = 10000;
 // Pocas a la vez: varias landings comparten servidor y muchas peticiones seguidas disparan su bloqueo anti-bots.
 const PARALLEL = Number(process.env.PARALLEL) || 3;
 // Palabras de webs de apuestas o spam: una landing suplantada (como pasó con Prado) las muestra.
+const NOISE = /googletagmanager|google-analytics|doubleclick|googleadservices|facebook\.(net|com)|hotjar|clarity\.ms|tiktok|bing\.com\/bat/i;
 const SPAM = /\b(casinos?|poker|betting|apuestas|scommesse|sportsbook|judi|togel|gacor|jackpot|viagra|cialis)\b/i;
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 FeelVigilante/1.0';
 
@@ -36,6 +37,14 @@ async function checkLanding(browser, landing) {
   const extraHTTPHeaders = process.env.VIGILANTE_KEY ? { 'X-Vigilante': process.env.VIGILANTE_KEY } : {};
   const page = await browser.newPage({ locale: 'es-ES', viewport: { width: 1280, height: 900 }, userAgent: UA, extraHTTPHeaders });
   const checks = [];
+  // Menos peticiones por pasada: el antiflood (mod_evasive) de los servidores de landings bloquea 60 s una IP
+  // que hace más de 50 peticiones a la misma página en 10 s. Las imágenes, fuentes y analítica no hacen falta
+  // para comprobar calendario, horarios, precio y formulario.
+  await page.route('**/*', (route) => {
+    const req = route.request();
+    if (['image', 'media', 'font'].includes(req.resourceType()) || NOISE.test(req.url())) return route.abort();
+    return route.continue();
+  });
   page.on('response', async (res) => {
     if (new URL(res.url()).pathname !== '/check' || res.request().method() !== 'POST') return;
     const body = await res.text().catch(() => '');
