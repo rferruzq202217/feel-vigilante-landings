@@ -1,0 +1,10 @@
+[Unit]
+Description=Vigilante de landings de Feel The City (una pasada)
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/feel-vigilante/repo/nexus/run.sh
+TimeoutStartSec=240
+Nice=10

@@ -104,7 +104,8 @@ async function load() {
     ['status.json', 'incidents.json', 'history.json'].map((f) => fetch(`${f}?t=${Date.now()}`).then((r) => r.json()))
   );
   const age = Math.round((Date.now() - Date.parse(status.checkedAt)) / 60000);
-  document.getElementById('sub').textContent = `Última comprobación: ${fmtTime(status.checkedAt)} (hace ${age} min) · se actualiza sola cada minuto`;
+  const from = status.source === 'nexus' ? 'desde Nexus' : 'desde GitHub (respaldo)';
+  document.getElementById('sub').textContent = `Última comprobación: ${fmtTime(status.checkedAt)} (hace ${age} min, ${from}) · se actualiza sola cada minuto`;
 
   const idxOf = (url) => history.urls.indexOf(url);
   const all24 = status.landings.map((l) => uptime(history, idxOf(l.url), 24)).filter((v) => v != null);

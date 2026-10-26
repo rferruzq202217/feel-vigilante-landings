@@ -17,7 +17,7 @@ const HISTORY_DAYS = 7;
 const TIMEOUT = 25000;
 const SLOW_MS = 10000;
 // Pocas a la vez: varias landings comparten servidor y muchas peticiones seguidas disparan su bloqueo anti-bots.
-const PARALLEL = 3;
+const PARALLEL = Number(process.env.PARALLEL) || 3;
 // Palabras de webs de apuestas o spam: una landing suplantada (como pasó con Prado) las muestra.
 const SPAM = /\b(casinos?|poker|betting|apuestas|scommesse|sportsbook|judi|togel|gacor|jackpot|viagra|cialis)\b/i;
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 FeelVigilante/1.0';
@@ -130,6 +130,8 @@ function writeSite(checkedAt, results, history, incidents) {
   // «down» son caídas reales; «blocked» son landings que bloquearon al vigilante y no se pudieron comprobar.
   const status = {
     checkedAt,
+    // Desde dónde se ha hecho la pasada: «nexus» (normal) o «github» (respaldo).
+    source: process.env.VIGILANTE_SOURCE || 'github',
     total: landings.length,
     down: landings.filter((l) => !l.ok && l.step !== 'bloqueo').length,
     blocked: landings.filter((l) => l.step === 'bloqueo').length,

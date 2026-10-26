@@ -1,5 +1,9 @@
 name: Vigilante de landings
 
+# Las pasadas normales las hace el servidor de Nexus (su IP no la bloquean las landings) y publica
+# estado y web en la rama «data». Este workflow publica esa web en GitHub Pages y hace de respaldo:
+# si Nexus lleva más de 15 minutos sin publicar, pasa él por las landings y avisa a Slack.
+
 on:
   schedule:
     - cron: '*/5 * * * *' # cada 5 minutos (GitHub puede retrasarlo unos minutos)
@@ -12,7 +16,7 @@ concurrency:
 
 permissions:
   actions: write
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -27,25 +31,61 @@ jobs:
     container: mcr.microsoft.com/playwright:v1.48.2-jammy
     steps:
       - run: echo "STARTED_AT=$(date +%s)" >> "$GITHUB_ENV"
+      # git hace falta para leer y escribir la rama data.
+      - run: command -v git || (apt-get update -qq && apt-get install -y -qq git >/dev/null)
       - uses: actions/checkout@v4
-      # Estado, histórico e incidencias de las pasadas anteriores.
-      - uses: actions/cache/restore@v4
+      # Lo último que se publicó (normalmente desde Nexus).
+      - name: Traer la rama data
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          if git fetch -q origin data; then git archive origin/data | tar -x; fi
+      # Hasta que exista la rama data, el estado viene de la caché de pasadas anteriores.
+      - if: hashFiles('data/state.json') == ''
+        uses: actions/cache/restore@v4
         with:
           path: data
           key: vigilante-data-${{ github.run_id }}
           restore-keys: vigilante-data-
-      - run: npm install --no-save --no-audit --no-fund playwright@1.48.2
-      - id: monitor
+      - uses: actions/cache/restore@v4
+        with:
+          path: watch
+          key: vigilante-watch-${{ github.run_id }}
+          restore-keys: vigilante-watch-
+      - id: watchdog
+        run: node watchdog.js
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - uses: actions/cache/save@v4
+        with:
+          path: watch
+          key: vigilante-watch-${{ github.run_id }}
+
+      # Respaldo: solo si Nexus no ha publicado en los últimos 15 minutos.
+      - if: steps.watchdog.outputs.fresh != 'true'
+        run: npm install --no-save --no-audit --no-fund playwright@1.48.2
+      - if: steps.watchdog.outputs.fresh != 'true'
+        id: monitor
         run: node monitor.js
         env:
           HOME: /root
+          VIGILANTE_SOURCE: github
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           VIGILANTE_KEY: ${{ secrets.VIGILANTE_KEY }}
-      - if: always()
+      - if: always() && steps.watchdog.outputs.fresh != 'true' && hashFiles('site/status.json') != ''
+        name: Publicar en la rama data
+        run: |
+          tmp=$(mktemp -d); cp -r data site "$tmp"/; cd "$tmp"
+          git init -q -b data && git add -A
+          git -c user.name="Vigilante GitHub" -c user.email="vigilante@feelthecity.invalid" commit -qm "Datos $(date -u +%FT%TZ) (respaldo)"
+          git push -qf "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - if: always() && steps.watchdog.outputs.fresh != 'true'
         uses: actions/cache/save@v4
         with:
           path: data
           key: vigilante-data-${{ github.run_id }}
+
       # Dashboard y JSON públicos (para el equipo y para Kasper), aunque haya caídas.
       - if: always() && hashFiles('site/status.json') != ''
         uses: actions/upload-pages-artifact@v3
