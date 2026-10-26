@@ -9,6 +9,13 @@ REPO="$BASE/repo"
 REMOTE_SSH=git@github.com:rferruzq202217/feel-vigilante-landings.git
 export GIT_SSH_COMMAND="ssh -i $BASE/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
 
+# Protección del servidor: si queda poca memoria libre, esta pasada se salta (GitHub la cubre si se repite).
+AVAIL_MB=$(awk '/MemAvailable/ {print int($2/1024)}' /proc/meminfo)
+if [ "$AVAIL_MB" -lt 1500 ]; then
+  echo "Solo hay ${AVAIL_MB} MB libres: pasada saltada para no cargar Nexus"
+  exit 0
+fi
+
 cd "$REPO"
 git fetch -q origin main
 git checkout -q -B main origin/main
@@ -24,8 +31,9 @@ if [ ! -d node_modules/playwright ]; then
   docker run --rm -v "$REPO":/app -w /app "$IMAGE" npm install --no-save --no-audit --no-fund playwright@1.48.2
 fi
 
-# El servidor va justo de memoria: contenedor limitado a 1 GB y 2 landings a la vez.
-docker run --rm --name feel-vigilante --memory=1g --memory-swap=1g --shm-size=256m \
+# El servidor va justo de memoria: contenedor limitado a 768 MB sin swap, poca CPU y 2 landings a la vez.
+# Si se pasa de memoria, Docker mata solo este contenedor; el resto del servidor no se entera.
+docker run --rm --name feel-vigilante --memory=768m --memory-swap=768m --cpus=1 --oom-score-adj=1000 --shm-size=256m \
   --env-file "$BASE/env" -e VIGILANTE_SOURCE=nexus -e PARALLEL=2 \
   -v "$REPO":/app -w /app "$IMAGE" node monitor.js || true
 
