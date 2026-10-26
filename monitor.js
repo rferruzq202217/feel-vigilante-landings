@@ -18,6 +18,8 @@ const TIMEOUT = 25000;
 const SLOW_MS = 10000;
 // Pocas a la vez: varias landings comparten servidor y muchas peticiones seguidas disparan su bloqueo anti-bots.
 const PARALLEL = 3;
+// Palabras de webs de apuestas o spam: una landing suplantada (como pasó con Prado) las muestra.
+const SPAM = /\b(casinos?|poker|betting|apuestas|scommesse|sportsbook|judi|togel|gacor|jackpot|viagra|cialis)\b/i;
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 FeelVigilante/1.0';
 
 function readJson(file, fallback) {
@@ -52,6 +54,13 @@ async function checkLanding(browser, landing) {
     }
     if (res.status() >= 400) throw fail('carga', `HTTP ${res.status()}`);
     const loadMs = Date.now() - started;
+
+    // Integridad: que siga en su dominio y no muestre contenido ajeno (suplantación o hackeo).
+    const host = (u) => new URL(u).hostname.replace(/^www\./, '');
+    if (host(page.url()) !== host(landing.url)) throw fail('suplantación', `redirige a otro dominio: ${host(page.url())}`);
+    const text = await page.evaluate(() => `${document.title}\n${document.body ? document.body.innerText.slice(0, 30000) : ''}`).catch(() => '');
+    const spam = text.match(SPAM);
+    if (spam) throw fail('suplantación', `la página contiene «${spam[0]}»: posible web hackeada`);
 
     await page.locator('#datepicker .ui-datepicker-calendar').waitFor({ state: 'visible', timeout: TIMEOUT })
       .catch(() => { throw fail('calendario', 'no aparece el calendario'); });
