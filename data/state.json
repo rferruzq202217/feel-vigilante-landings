@@ -1,0 +1,72 @@
+{
+  "https://pradomuseum-tickets.feelthecitytours.com": {
+    "ok": true
+  },
+  "https://madridroyalpalace-tickets.feelthecitytours.com": {
+    "ok": true
+  },
+  "https://www.realalcazarsevilla.com/": {
+    "ok": true
+  },
+  "https://www.mezquita-cordoba.com/": {
+    "ok": true
+  },
+  "https://www.tickets-alhambra-palace.com/": {
+    "ok": false,
+    "since": "2026-10-27T11:40:37.434Z",
+    "step": "carga"
+  },
+  "https://museoreinasofia-tickets.org/": {
+    "ok": true
+  },
+  "https://www.sagradafamiliatickets.org/": {
+    "ok": true
+  },
+  "https://catedraldesevilla.com/": {
+    "ok": true
+  },
+  "http://park-guell-tickets.org/": {
+    "ok": true
+  },
+  "https://louvre-museum-tickets.org/en": {
+    "ok": true
+  },
+  "https://www.acropolis-athens-tickets.org/en": {
+    "ok": true
+  },
+  "https://www.museivaticanitickets.com/": {
+    "ok": true
+  },
+  "https://www.colosseumdiroma-tickets.com": {
+    "ok": true
+  },
+  "https://www.pantheonroma-tickets.org": {
+    "ok": true
+  },
+  "https://accademia-gallery-tickets.org/en": {
+    "ok": true
+  },
+  "https://pompeii-ticket.org/en": {
+    "ok": true
+  },
+  "https://castelsantangelo-tickets.org/en": {
+    "ok": true
+  },
+  "https://www.london-tower-ticket.com/": {
+    "ok": true
+  },
+  "https://buckingham-palace-tickets.org/en": {
+    "ok": false,
+    "since": "2026-10-25T20:46:35.315Z",
+    "step": "carga"
+  },
+  "https://duomo.florence-ticket.org": {
+    "ok": true
+  },
+  "https://uffizigallery.florence-ticket.org": {
+    "ok": true
+  },
+  "https://westminster-abbey-tickets.com": {
+    "ok": true
+  }
+}

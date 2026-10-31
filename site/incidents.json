@@ -1,0 +1,1541 @@
+[
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-25T20:46:35.315Z",
+    "end": "2026-10-25T20:55:12.785Z",
+    "minutes": 9,
+    "step": "carga",
+    "detail": "HTTP 403"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-25T20:46:35.315Z",
+    "end": "2026-10-25T20:49:39.549Z",
+    "minutes": 3,
+    "step": "carga",
+    "detail": "HTTP 403"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-25T20:46:35.315Z",
+    "end": "2026-10-25T20:55:12.785Z",
+    "minutes": 9,
+    "step": "carga",
+    "detail": "HTTP 403"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-25T20:46:35.315Z",
+    "end": "2026-10-25T20:55:12.785Z",
+    "minutes": 9,
+    "step": "carga",
+    "detail": "HTTP 403"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-25T20:46:35.315Z",
+    "end": "2026-10-25T20:55:12.785Z",
+    "minutes": 9,
+    "step": "carga",
+    "detail": "HTTP 403"
+  },
+  {
+    "name": "Buckingham",
+    "url": "https://buckingham-palace-tickets.org/en",
+    "start": "2026-10-25T20:46:35.315Z",
+    "end": null,
+    "minutes": null,
+    "step": "carga",
+    "detail": "page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://buckingham-palace-tickets.org/en"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-25T21:00:46.402Z",
+    "end": "2026-10-25T21:23:20.368Z",
+    "minutes": 23,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-25T21:00:46.402Z",
+    "end": "2026-10-25T21:17:41.770Z",
+    "minutes": 17,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-25T21:00:46.402Z",
+    "end": "2026-10-25T21:11:58.328Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-25T21:06:25.091Z",
+    "end": "2026-10-25T21:28:57.712Z",
+    "minutes": 23,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-25T21:11:58.328Z",
+    "end": "2026-10-25T21:23:20.368Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-25T21:17:41.770Z",
+    "end": "2026-10-25T21:23:20.368Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-25T21:28:57.712Z",
+    "end": "2026-10-25T21:40:16.860Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-25T21:28:57.712Z",
+    "end": "2026-10-25T21:34:39.807Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-25T21:28:57.712Z",
+    "end": "2026-10-25T21:34:39.807Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-25T21:34:39.807Z",
+    "end": "2026-10-25T21:40:16.860Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-25T21:45:55.013Z",
+    "end": "2026-10-25T21:57:01.941Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-25T21:45:55.013Z",
+    "end": "2026-10-25T21:51:29.621Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-25T21:51:29.621Z",
+    "end": "2026-10-25T22:08:08.076Z",
+    "minutes": 17,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-25T21:51:29.621Z",
+    "end": "2026-10-25T21:57:01.941Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-25T22:02:34.139Z",
+    "end": "2026-10-25T22:08:08.076Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-25T22:02:34.139Z",
+    "end": "2026-10-25T22:08:08.076Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-25T22:02:34.139Z",
+    "end": "2026-10-25T22:52:57.753Z",
+    "minutes": 50,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-25T22:08:08.076Z",
+    "end": "2026-10-25T22:13:41.807Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-25T22:13:41.807Z",
+    "end": "2026-10-25T22:24:50.593Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-25T22:13:41.807Z",
+    "end": "2026-10-25T22:52:57.753Z",
+    "minutes": 39,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-25T22:19:16.564Z",
+    "end": "2026-10-25T22:24:50.593Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-25T22:19:16.564Z",
+    "end": "2026-10-25T22:24:50.593Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-25T22:41:40.942Z",
+    "end": "2026-10-25T22:47:18.910Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-25T22:41:40.942Z",
+    "end": "2026-10-25T22:47:18.910Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-25T22:41:40.942Z",
+    "end": "2026-10-25T22:47:18.910Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-25T22:58:39.408Z",
+    "end": "2026-10-25T23:26:35.267Z",
+    "minutes": 28,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-25T23:04:13.634Z",
+    "end": "2026-10-25T23:09:48.063Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-25T23:04:13.634Z",
+    "end": "2026-10-25T23:09:48.063Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-25T23:04:13.634Z",
+    "end": "2026-10-25T23:09:48.063Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-25T23:21:03.284Z",
+    "end": "2026-10-25T23:26:35.267Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-25T23:21:03.284Z",
+    "end": "2026-10-25T23:26:35.267Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-25T23:43:32.146Z",
+    "end": "2026-10-25T23:54:37.926Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-25T23:43:32.146Z",
+    "end": "2026-10-25T23:54:37.926Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-25T23:43:32.146Z",
+    "end": "2026-10-26T00:05:50.995Z",
+    "minutes": 22,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-25T23:54:37.926Z",
+    "end": "2026-10-26T00:11:31.586Z",
+    "minutes": 17,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-26T00:00:12.158Z",
+    "end": "2026-10-26T00:05:50.995Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-26T00:00:12.158Z",
+    "end": "2026-10-26T00:05:50.995Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T00:05:50.995Z",
+    "end": "2026-10-26T00:33:57.258Z",
+    "minutes": 28,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T00:22:38.487Z",
+    "end": "2026-10-26T00:28:18.007Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-26T00:33:57.258Z",
+    "end": "2026-10-26T00:39:30.789Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T00:39:30.789Z",
+    "end": "2026-10-26T00:45:02.409Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T00:39:30.789Z",
+    "end": "2026-10-26T00:45:02.409Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T00:50:35.412Z",
+    "end": "2026-10-26T01:01:47.860Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T00:56:08.080Z",
+    "end": "2026-10-26T01:01:47.860Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T01:13:06.496Z",
+    "end": "2026-10-26T01:24:22.329Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T01:13:06.496Z",
+    "end": "2026-10-26T01:18:41.652Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T01:18:41.652Z",
+    "end": "2026-10-26T01:24:22.329Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T01:30:04.639Z",
+    "end": "2026-10-26T01:35:48.647Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T01:30:04.639Z",
+    "end": "2026-10-26T01:35:48.647Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T01:30:04.639Z",
+    "end": "2026-10-26T01:35:48.647Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T01:46:59.427Z",
+    "end": "2026-10-26T01:52:45.309Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T01:52:45.309Z",
+    "end": "2026-10-26T01:58:17.767Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T02:03:58.616Z",
+    "end": "2026-10-26T02:09:42.225Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T02:03:58.616Z",
+    "end": "2026-10-26T02:15:14.624Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-26T02:09:42.225Z",
+    "end": "2026-10-26T02:15:14.624Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T02:09:42.225Z",
+    "end": "2026-10-26T02:26:21.916Z",
+    "minutes": 17,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-26T02:15:14.624Z",
+    "end": "2026-10-26T02:26:21.916Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-26T02:20:45.967Z",
+    "end": "2026-10-26T02:26:21.916Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T02:20:45.967Z",
+    "end": "2026-10-26T02:26:21.916Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T02:20:45.967Z",
+    "end": "2026-10-26T02:26:21.916Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-26T02:37:36.764Z",
+    "end": "2026-10-26T02:48:42.716Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T02:37:36.764Z",
+    "end": "2026-10-26T02:48:42.716Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T02:37:36.764Z",
+    "end": "2026-10-26T02:54:14.431Z",
+    "minutes": 17,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T02:37:36.764Z",
+    "end": "2026-10-26T02:43:10.417Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T02:59:50.740Z",
+    "end": "2026-10-26T03:11:04.244Z",
+    "minutes": 11,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T03:05:22.274Z",
+    "end": "2026-10-26T03:11:04.244Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T03:27:57.171Z",
+    "end": "2026-10-26T03:33:33.182Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T03:39:05.874Z",
+    "end": "2026-10-26T03:44:37.623Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T03:39:05.874Z",
+    "end": "2026-10-26T03:44:37.623Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Coliseo",
+    "url": "https://www.colosseumdiroma-tickets.com",
+    "start": "2026-10-26T03:55:42.685Z",
+    "end": "2026-10-26T04:01:16.582Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-26T03:55:42.685Z",
+    "end": "2026-10-26T04:01:16.582Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T03:55:42.685Z",
+    "end": "2026-10-26T04:01:16.582Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T04:06:54.049Z",
+    "end": "2026-10-26T04:12:36.358Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T04:06:54.049Z",
+    "end": "2026-10-26T04:12:36.358Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T04:18:18.561Z",
+    "end": "2026-10-26T04:23:50.795Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T04:18:18.561Z",
+    "end": "2026-10-26T04:23:50.795Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T04:43:51.004Z",
+    "end": "2026-10-26T04:50:24.102Z",
+    "minutes": 7,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T04:43:51.004Z",
+    "end": "2026-10-26T04:50:24.102Z",
+    "minutes": 7,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T04:43:51.004Z",
+    "end": "2026-10-26T04:50:24.102Z",
+    "minutes": 7,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T04:56:55.915Z",
+    "end": "2026-10-26T05:03:24.797Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-26T05:09:54.014Z",
+    "end": "2026-10-26T05:16:22.200Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T05:09:54.014Z",
+    "end": "2026-10-26T05:16:22.200Z",
+    "minutes": 6,
+    "step": "bloqueo",
+    "detail": "HTTP 403: el servidor (Apache) bloquea al vigilante; comprobar si también a clientes"
+  },
+  {
+    "name": "Louvre",
+    "url": "https://louvre-museum-tickets.org/en",
+    "start": "2026-10-26T06:25:11.916Z",
+    "end": "2026-10-26T06:31:26.890Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Sagrada Familia",
+    "url": "https://www.sagradafamiliatickets.org/",
+    "start": "2026-10-26T08:47:36.325Z",
+    "end": "2026-10-26T08:53:57.666Z",
+    "minutes": 6,
+    "step": "calendario",
+    "detail": "no aparece el calendario"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-26T08:53:57.666Z",
+    "end": "2026-10-26T09:01:10.903Z",
+    "minutes": 7,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Pompeya",
+    "url": "https://pompeii-ticket.org/en",
+    "start": "2026-10-26T08:53:57.666Z",
+    "end": "2026-10-26T09:01:10.903Z",
+    "minutes": 7,
+    "step": "carga",
+    "detail": "page.goto: Timeout 25000ms exceeded."
+  },
+  {
+    "name": "Alhambra",
+    "url": "https://www.tickets-alhambra-palace.com/",
+    "start": "2026-10-26T09:32:24.933Z",
+    "end": "2026-10-26T09:38:38.763Z",
+    "minutes": 6,
+    "step": "precio",
+    "detail": "no calcula el precio"
+  },
+  {
+    "name": "Alcázar de Sevilla",
+    "url": "https://www.realalcazarsevilla.com/",
+    "start": "2026-10-26T10:34:12.941Z",
+    "end": "2026-10-26T10:40:24.405Z",
+    "minutes": 6,
+    "step": "precio",
+    "detail": "no calcula el precio"
+  },
+  {
+    "name": "Westminster",
+    "url": "https://westminster-abbey-tickets.com",
+    "start": "2026-10-26T11:04:56.682Z",
+    "end": "2026-10-26T11:12:04.633Z",
+    "minutes": 7,
+    "step": "carga",
+    "detail": "page.goto: Timeout 25000ms exceeded."
+  },
+  {
+    "name": "Louvre",
+    "url": "https://louvre-museum-tickets.org/en",
+    "start": "2026-10-26T11:42:53.681Z",
+    "end": "2026-10-26T11:49:03.739Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-26T15:18:54.367Z",
+    "end": "2026-10-26T15:25:13.138Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Mezquita de Córdoba",
+    "url": "https://www.mezquita-cordoba.com/",
+    "start": "2026-10-26T16:33:22.030Z",
+    "end": "2026-10-26T16:39:39.840Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Alcázar de Sevilla",
+    "url": "https://www.realalcazarsevilla.com/",
+    "start": "2026-10-26T16:52:07.948Z",
+    "end": "2026-10-26T16:58:24.672Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Alhambra",
+    "url": "https://www.tickets-alhambra-palace.com/",
+    "start": "2026-10-26T17:29:28.088Z",
+    "end": "2026-10-26T17:35:42.240Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T19:09:33.888Z",
+    "end": "2026-10-26T19:15:49.699Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-26T20:49:32.291Z",
+    "end": "2026-10-26T20:55:44.669Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-26T22:04:15.700Z",
+    "end": "2026-10-26T22:10:36.206Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-26T22:48:05.609Z",
+    "end": "2026-10-26T22:54:21.168Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Alhambra",
+    "url": "https://www.tickets-alhambra-palace.com/",
+    "start": "2026-10-27T00:34:44.531Z",
+    "end": "2026-10-27T00:41:03.857Z",
+    "minutes": 6,
+    "step": "precio",
+    "detail": "no calcula el precio"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-27T03:05:13.966Z",
+    "end": "2026-10-27T03:11:29.935Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-27T04:01:09.521Z",
+    "end": "2026-10-27T04:07:32.007Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-27T04:45:10.756Z",
+    "end": "2026-10-27T04:51:29.966Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-27T05:47:47.230Z",
+    "end": "2026-10-27T05:54:05.939Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-27T06:06:32.895Z",
+    "end": "2026-10-27T06:12:48.766Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-27T06:56:18.576Z",
+    "end": "2026-10-27T07:02:31.776Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Palacio Real",
+    "url": "https://madridroyalpalace-tickets.feelthecitytours.com",
+    "start": "2026-10-27T07:52:14.285Z",
+    "end": "2026-10-27T07:58:23.505Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-27T07:58:23.505Z",
+    "end": "2026-10-27T08:04:35.530Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-27T09:12:28.056Z",
+    "end": "2026-10-27T09:18:37.794Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-27T10:26:26.864Z",
+    "end": "2026-10-27T10:32:33.641Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-27T11:03:33.813Z",
+    "end": "2026-10-27T11:09:46.739Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Alhambra",
+    "url": "https://www.tickets-alhambra-palace.com/",
+    "start": "2026-10-27T11:40:37.434Z",
+    "end": null,
+    "minutes": null,
+    "step": "carga",
+    "detail": "page.goto: net::ERR_CONNECTION_CLOSED at https://www.tickets-alhambra-palace.com/"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-27T11:40:37.434Z",
+    "end": "2026-10-27T11:46:51.708Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-27T11:40:37.434Z",
+    "end": "2026-10-27T11:46:51.708Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-27T13:28:48.950Z",
+    "end": "2026-10-27T13:35:14.294Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-27T13:54:19.334Z",
+    "end": "2026-10-27T14:00:42.335Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Sagrada Familia",
+    "url": "https://www.sagradafamiliatickets.org/",
+    "start": "2026-10-27T14:13:24.656Z",
+    "end": "2026-10-27T14:19:49.792Z",
+    "minutes": 6,
+    "step": "precio",
+    "detail": "no calcula el precio"
+  },
+  {
+    "name": "Uffizi",
+    "url": "https://uffizigallery.florence-ticket.org",
+    "start": "2026-10-27T14:45:15.891Z",
+    "end": "2026-10-27T14:51:41.489Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-27T16:07:54.392Z",
+    "end": "2026-10-27T16:14:15.262Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Mezquita de Córdoba",
+    "url": "https://www.mezquita-cordoba.com/",
+    "start": "2026-10-27T16:33:21.024Z",
+    "end": "2026-10-27T16:39:43.023Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Louvre",
+    "url": "https://louvre-museum-tickets.org/en",
+    "start": "2026-10-27T17:30:51.151Z",
+    "end": "2026-10-27T17:37:15.347Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "/check no devuelve datos: null"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-28T11:46:09.801Z",
+    "end": "2026-10-28T11:52:35.396Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-28T12:36:50.404Z",
+    "end": "2026-10-28T12:43:12.560Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-28T12:49:30.711Z",
+    "end": "2026-10-28T12:55:53.953Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-28T13:15:00.557Z",
+    "end": "2026-10-28T13:21:23.886Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-28T13:27:44.310Z",
+    "end": "2026-10-28T13:34:16.437Z",
+    "minutes": 7,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Uffizi",
+    "url": "https://uffizigallery.florence-ticket.org",
+    "start": "2026-10-28T14:44:10.880Z",
+    "end": "2026-10-28T14:50:36.587Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-28T15:22:26.213Z",
+    "end": "2026-10-28T15:28:52.529Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-28T16:13:25.673Z",
+    "end": "2026-10-28T16:19:49.797Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Vaticano",
+    "url": "https://www.museivaticanitickets.com/",
+    "start": "2026-10-28T16:26:11.887Z",
+    "end": "2026-10-28T16:32:39.114Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Mezquita de Córdoba",
+    "url": "https://www.mezquita-cordoba.com/",
+    "start": "2026-10-28T16:32:39.114Z",
+    "end": "2026-10-28T16:39:03.812Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-28T20:42:34.850Z",
+    "end": "2026-10-28T20:49:00.556Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-28T22:18:51.226Z",
+    "end": "2026-10-28T22:25:15.713Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Sagrada Familia",
+    "url": "https://www.sagradafamiliatickets.org/",
+    "start": "2026-10-28T22:31:38.265Z",
+    "end": "2026-10-28T22:38:06.300Z",
+    "minutes": 6,
+    "step": "precio",
+    "detail": "no calcula el precio"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-28T22:38:06.300Z",
+    "end": "2026-10-28T22:44:35.849Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-28T23:03:47.460Z",
+    "end": "2026-10-28T23:10:13.070Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-29T04:48:55.724Z",
+    "end": "2026-10-29T04:55:21.301Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-29T05:40:18.975Z",
+    "end": "2026-10-29T05:46:48.598Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-29T06:18:50.182Z",
+    "end": "2026-10-29T06:25:14.094Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-29T09:05:15.783Z",
+    "end": "2026-10-29T09:11:39.775Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-29T09:24:28.745Z",
+    "end": "2026-10-29T09:30:54.992Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Palacio Real",
+    "url": "https://madridroyalpalace-tickets.feelthecitytours.com",
+    "start": "2026-10-29T12:28:54.396Z",
+    "end": "2026-10-29T12:35:17.673Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-29T15:14:12.021Z",
+    "end": "2026-10-29T15:20:37.656Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-29T15:46:09.607Z",
+    "end": "2026-10-29T15:52:32.891Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Mezquita de Córdoba",
+    "url": "https://www.mezquita-cordoba.com/",
+    "start": "2026-10-29T16:30:41.687Z",
+    "end": "2026-10-29T16:37:06.756Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Museo Reina Sofía",
+    "url": "https://museoreinasofia-tickets.org/",
+    "start": "2026-10-29T16:30:41.687Z",
+    "end": "2026-10-29T16:37:06.756Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-29T23:13:54.718Z",
+    "end": "2026-10-29T23:20:21.220Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-30T05:31:15.967Z",
+    "end": "2026-10-30T05:37:41.033Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-30T06:22:24.835Z",
+    "end": "2026-10-30T06:28:49.839Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-30T07:26:20.416Z",
+    "end": "2026-10-30T07:32:46.498Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-30T09:08:28.824Z",
+    "end": "2026-10-30T09:14:52.466Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Catedral de Sevilla",
+    "url": "https://catedraldesevilla.com/",
+    "start": "2026-10-30T10:18:31.556Z",
+    "end": "2026-10-30T10:24:55.288Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-30T11:09:29.918Z",
+    "end": "2026-10-30T11:15:46.597Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-30T12:06:06.638Z",
+    "end": "2026-10-30T12:12:21.097Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Palacio Real",
+    "url": "https://madridroyalpalace-tickets.feelthecitytours.com",
+    "start": "2026-10-30T13:45:57.305Z",
+    "end": "2026-10-30T13:52:12.192Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-30T15:45:37.013Z",
+    "end": "2026-10-30T15:51:54.762Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-30T15:58:06.681Z",
+    "end": "2026-10-30T16:04:23.402Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-30T17:45:12.024Z",
+    "end": "2026-10-30T17:51:26.316Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-30T23:11:13.919Z",
+    "end": "2026-10-30T23:17:31.294Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-30T23:42:37.557Z",
+    "end": "2026-10-30T23:48:54.193Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Academia",
+    "url": "https://accademia-gallery-tickets.org/en",
+    "start": "2026-10-31T03:23:47.383Z",
+    "end": "2026-10-31T03:30:13.407Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Panteón",
+    "url": "https://www.pantheonroma-tickets.org",
+    "start": "2026-10-31T09:30:54.053Z",
+    "end": "2026-10-31T09:37:12.836Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Louvre",
+    "url": "https://louvre-museum-tickets.org/en",
+    "start": "2026-10-31T12:40:31.127Z",
+    "end": "2026-10-31T12:46:51.236Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-31T13:18:34.927Z",
+    "end": "2026-10-31T13:25:34.068Z",
+    "minutes": 7,
+    "step": "carga",
+    "detail": "page.goto: Timeout 25000ms exceeded."
+  },
+  {
+    "name": "Castel Sant Angelo",
+    "url": "https://castelsantangelo-tickets.org/en",
+    "start": "2026-10-31T14:47:37.540Z",
+    "end": "2026-10-31T14:54:03.268Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  },
+  {
+    "name": "Parque Güell",
+    "url": "http://park-guell-tickets.org/",
+    "start": "2026-10-31T15:51:05.780Z",
+    "end": "2026-10-31T15:57:25.121Z",
+    "minutes": 6,
+    "step": "disponibilidad",
+    "detail": "sin horarios para la primera fecha del calendario"
+  }
+]
